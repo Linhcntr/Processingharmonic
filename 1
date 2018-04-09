@@ -1,0 +1,30 @@
+//Harmonic sin cos
+ int steps=36;
+ float x;
+ float y;
+ float r=200f;
+ PVector oldPos;
+ void setup(){
+ size(800,500);
+ }
+ void draw(){
+  background(255);
+  translate(width/2,height/2);
+  for(int i=0;i<steps;i++)
+  {
+    float ang=map(i,0,steps,0,2f*PI);
+    
+    x=sin(ang*(mouseX/100f))*r;
+    y=cos(ang*(mouseY/100f))*r;
+    
+    noStroke();
+    fill(0);
+    ellipse(x,y,4,4);
+     
+    if(oldPos!=null)
+    { stroke(0);
+    line(x,y,oldPos.x,oldPos.y);
+  }   
+  oldPos=new PVector(x,y);
+  }
+ }
